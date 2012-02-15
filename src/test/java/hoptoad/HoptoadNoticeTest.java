@@ -12,15 +12,12 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
-import org.apache.commons.logging.*;
 import org.junit.*;
 
 public class HoptoadNoticeTest {
 	protected static final Backtrace BACKTRACE = new Backtrace(asList("backtrace is empty"));;
 	protected static final Map<String, Object> REQUEST = new HashMap<String, Object>();
 	protected static final Map<String, Object> ENVIRONMENT = new HashMap<String, Object>();
-
-	private final Log logger = LogFactory.getLog(getClass());
 
 	private final Map<String, Object> EC2 = new HashMap<String, Object>();
 
@@ -31,28 +28,6 @@ public class HoptoadNoticeTest {
 		EC2.put("EC2_PRIVATE_KEY", "EC2_PRIVATE_KEY");
 		EC2.put("AWS_ACCESS", "AWS_ACCESS");
 		EC2.put("EC2_CERT", "EC2_CERT");
-	}
-
-	@Test
-	public void testLogErrorWithException() {
-		logger.error("error", newException(ERROR_MESSAGE));
-	}
-
-	@Test
-	public void testLogErrorWithoutException() {
-		logger.error("error");
-	}
-
-	@Test
-	public void testLogThresholdLesserThatErrorWithExceptionDoNotNotifyToHoptoad() {
-		logger.info("info", newException(ERROR_MESSAGE));
-		logger.warn("warn", newException(ERROR_MESSAGE));
-	}
-
-	@Test
-	public void testLogThresholdLesserThatErrorWithoutExceptionDoNotNotifyToHoptoad() {
-		logger.info("info");
-		logger.warn("warn");
 	}
 
 	@Test

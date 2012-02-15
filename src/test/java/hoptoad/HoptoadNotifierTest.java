@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
 
 import java.util.*;
 
-import org.apache.commons.logging.*;
 import org.hamcrest.*;
 import org.junit.*;
 
@@ -24,8 +23,6 @@ public class HoptoadNotifierTest {
 	protected static final Map<String, Object> REQUEST = new HashMap<String, Object>();
 	protected static final Map<String, Object> SESSION = new HashMap<String, Object>();
 	protected static final Map<String, Object> ENVIRONMENT = new HashMap<String, Object>();
-
-	private final Log logger = LogFactory.getLog(getClass());
 
 	private final Map<String, Object> EC2 = new HashMap<String, Object>();
 
@@ -68,28 +65,6 @@ public class HoptoadNotifierTest {
 		assertThat(notifing("Caused by: java.lang.NullPointerException"), not(internalServerError()));
 		assertThat(notifing("at code.lucamarrocco.notifier.Exceptions.newException(Exceptions.java:11)"), not(internalServerError()));
 		assertThat(notifing("... 23 more"), not(internalServerError()));
-	}
-
-	@Test
-	public void testLogErrorWithException() {
-		logger.error("error", newException(ERROR_MESSAGE));
-	}
-
-	@Test
-	public void testLogErrorWithoutException() {
-		logger.error("error");
-	}
-
-	@Test
-	public void testLogThresholdLesserThatErrorWithExceptionDoNotNotifyToHoptoad() {
-		logger.info("info", newException(ERROR_MESSAGE));
-		logger.warn("warn", newException(ERROR_MESSAGE));
-	}
-
-	@Test
-	public void testLogThresholdLesserThatErrorWithoutExceptionDoNotNotifyToHoptoad() {
-		logger.info("info");
-		logger.warn("warn");
 	}
 
 	@Test
