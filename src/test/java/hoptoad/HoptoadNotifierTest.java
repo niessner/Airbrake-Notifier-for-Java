@@ -145,14 +145,6 @@ public class HoptoadNotifierTest {
 	}
 
 	@Test
-	public void testSendExceptionToHoptoadUsingRubyBacktraceAndFilteredSystemProperties() {
-		final Exception EXCEPTION = newException(ERROR_MESSAGE);
-		final HoptoadNotice notice = new HoptoadNoticeBuilderUsingFilterdSystemProperties(API_KEY, new RubyBacktrace(), EXCEPTION, "test").newNotice();
-
-		assertThat(notifierV2.notify(notice), is(200));
-	}
-
-	@Test
 	public void testSendNoticeToHoptoad() {
 		final HoptoadNotice notice = new HoptoadNoticeBuilder(API_KEY, ERROR_MESSAGE).newNotice();
 
