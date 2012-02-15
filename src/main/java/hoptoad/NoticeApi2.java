@@ -4,10 +4,10 @@
 
 package hoptoad;
 
+import copy.org.apache.commons.lang.StringEscapeUtils;
+
 import java.util.*;
 import java.util.Map.Entry;
-
-import org.apache.commons.lang.*;
 
 public class NoticeApi2 {
 

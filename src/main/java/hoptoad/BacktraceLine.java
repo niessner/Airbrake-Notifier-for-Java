@@ -4,9 +4,10 @@
 
 package hoptoad;
 
+import copy.org.apache.commons.lang.StringEscapeUtils;
+
 import static java.text.MessageFormat.*;
 
-import org.apache.commons.lang.*;
 
 public class BacktraceLine {
 
